@@ -1,0 +1,82 @@
+#!/bin/sh
+
+main() {
+  install_homebrew
+  install_packages_and_apps
+  install_oh_my_zsh
+}
+
+install_homebrew() {
+  if ! command -v brew > /dev/null 2>&1; then
+    pretty_print "Installing Homebrew"
+      /bin/bash -c \
+        "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+
+    pretty_print "Getting doctor's approval"
+    brew doctor
+  fi
+}
+
+install_packages_and_apps() {
+  pretty_print "Updating Homebrew formulae"
+  brew update
+  
+  pretty_print "Installing Homebrew packages"
+  brew bundle --file=- <<EOF
+    brew "mas"
+    
+    cask "dash"
+    cask "time-out"
+    cask "rectangle"
+    cask "deepl"
+    cask "iterm2"
+    cask "menumeters"
+    cask "google-chrome"
+    cask "bitwarden"
+    cask "visual-studio-code"
+    cask "spotify"
+    
+    # Social
+    cask "whatsapp"
+    cask "telegram"
+    
+    # Work
+    # cask "android-studio"
+    # cask "pritunl"
+    
+    # Personal
+    # cask "sourcetree"
+EOF
+  
+  pretty_print "Installing Mac App Store apps"
+  mas install 497799835 # Xcode (12.2)
+  mas install 409203825 # Numbers (10.3.5)
+  mas install 1107421413 # 1Blocker (3.12)
+  mas install 1438243180 # Dark Reader for Safari (1.4.2)
+}
+
+install_oh_my_zsh() {
+  if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    pretty_print "Installing Oh My Zsh"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  fi
+}
+
+# https://gist.github.com/arianacosta/d6d1c521d231cc09ec5fe850ae2f5be1
+pretty_print() {
+  # COLOR="96m";
+  COLOR="92m";
+  # COLOR="93m";
+  # COLOR="91m";
+  # COLOR="0m"; # default colour
+
+  STARTCOLOR="\e[$COLOR";
+  ENDCOLOR="\e[0m";
+
+  printf "$STARTCOLOR%b$ENDCOLOR" "\\n▸▸▸ $1\\n";
+}
+
+set -e
+
+# https://unix.stackexchange.com/a/449508
+main "$@"; exit
