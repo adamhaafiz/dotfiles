@@ -4,6 +4,12 @@ main() {
   install_homebrew
   install_packages_and_apps
   install_oh_my_zsh
+  install_oh_my_zsh_plugins
+
+  # shellcheck disable=SC2119
+  install_oh_my_zsh_aliases
+  set_macos_preferences
+  print_manual_instructions
 }
 
 install_homebrew() {
@@ -18,9 +24,6 @@ install_homebrew() {
 }
 
 install_packages_and_apps() {
-  pretty_print "Updating Homebrew formulae"
-  brew update
-  
   pretty_print "Installing Homebrew packages"
   brew bundle --file=- <<EOF
     brew "mas"
@@ -49,17 +52,85 @@ install_packages_and_apps() {
 EOF
   
   pretty_print "Installing Mac App Store apps"
-  mas install 497799835 # Xcode (12.2)
-  mas install 409203825 # Numbers (10.3.5)
-  mas install 1107421413 # 1Blocker (3.12)
-  mas install 1438243180 # Dark Reader for Safari (1.4.2)
+  mas install 497799835 # Xcode
+  mas install 409203825 # Numbers
+  mas install 1107421413 # 1Blocker
+  mas install 1438243180 # Dark Reader for Safari
 }
 
 install_oh_my_zsh() {
   if [ ! -d "$HOME/.oh-my-zsh" ]; then
     pretty_print "Installing Oh My Zsh"
+    pretty_print "Rerun the script again after Z shell restarts"
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   fi
+}
+
+install_oh_my_zsh_plugins() {
+  pretty_print "Installing Oh My Zsh plugins"
+  
+  # ZSH-z
+  if [ ! -d "$HOME/.oh-my-zsh/plugins/zsh-z" ]; then
+    git clone https://github.com/agkozak/zsh-z "$HOME/.oh-my-zsh/plugins/zsh-z"
+  fi
+
+  # auto-color-ls
+  if [ ! -d "$HOME/.oh-my-zsh/plugins/auto-color-ls" ]; then
+    gem install colorls --user-install
+    git clone https://github.com/gretzky/auto-color-ls "$HOME/.oh-my-zsh/plugins/auto-color-ls"
+  fi
+
+  # zsh-syntax-highlighting
+  if [ ! -d "$HOME/.oh-my-zsh/plugins/zsh-syntax-highlighting" ]; then
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/.oh-my-zsh/plugins/zsh-syntax-highlighting"
+  fi
+}
+
+# shellcheck disable=SC2120
+install_oh_my_zsh_aliases() {
+  pretty_print "Creating Oh My Zsh aliases"
+
+  if [ ! -f "$HOME/.oh-my-zsh/custom/aliases.zsh" ]; then
+    cat <<-EOF >> "$HOME/.oh-my-zsh/custom/aliases.zsh"
+      alias lc='colorls -A1 --sd'   
+EOF
+  fi
+
+  if [ ! -f "$HOME/.oh-my-zsh/custom/cman.zsh" ]; then
+    cat <<EOF >> "$HOME/.oh-my-zsh/custom/cman.zsh"
+      cman() {
+        if [ -z "\$1" ]
+        then
+          echo "No argument supplied"
+        else
+          man \$1 | col -bx | code -
+        fi
+      }
+EOF
+  fi
+}
+
+# https://github.com/mathiasbynens/dotfiles/blob/main/.macos
+set_macos_preferences() {
+  # Close any open System Preferences panes, to prevent them from overriding
+  # settings we’re about to change
+  osascript -e 'tell application "System Preferences" to quit'
+
+  # Ask for the administrator password upfront
+  sudo -v
+
+  # Keep-alive: update existing `sudo` time stamp until `.macos` has finished
+  while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+  # Keyboard -> Input Sources
+  # Show Input menu in menu bar
+  defaults write com.apple.TextInputMenu '{ visible = 1; }'
+}
+
+print_manual_instructions() {
+  pretty_print "There's still room for improvement in this script. Some stuff needs to be done manually, mainly: "
+  pretty_print "Modify ~/.zshrc with: plugins=(git zsh-z auto-color-ls zsh-syntax-highlighting)"
+  pretty_print "Update $PATH with path to gems: export PATH=$HOME/.gem/ruby/2.6.0/bin:$PATH"
 }
 
 # https://gist.github.com/arianacosta/d6d1c521d231cc09ec5fe850ae2f5be1
