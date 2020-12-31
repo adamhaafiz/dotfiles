@@ -3,13 +3,16 @@
 main() {
   install_homebrew
   install_packages_and_apps
+
+  clone_dotfiles
+  create_symlinks
+
   install_oh_my_zsh
   install_oh_my_zsh_plugins
 
   # shellcheck disable=SC2119
   install_oh_my_zsh_aliases
   set_macos_preferences
-  print_manual_instructions
 }
 
 install_homebrew() {
@@ -58,11 +61,19 @@ EOF
   mas install 1438243180 # Dark Reader for Safari
 }
 
+clone_dotfiles() {
+  git clone https://github.com/haafiz-io/dotfiles.git ~/.dotfiles
+}
+
+create_symlinks() {
+  ln -s ~/.dotfiles/z-shell-run-config ~/.zshrc
+}
+
 install_oh_my_zsh() {
   if [ ! -d "$HOME/.oh-my-zsh" ]; then
     pretty_print "Installing Oh My Zsh"
     pretty_print "Rerun the script again after Z shell restarts"
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --keep-zshrc
   fi
 }
 
@@ -125,12 +136,6 @@ set_macos_preferences() {
   # Keyboard -> Input Sources
   # Show Input menu in menu bar
   defaults write com.apple.TextInputMenu '{ visible = 1; }'
-}
-
-print_manual_instructions() {
-  pretty_print "There's still room for improvement in this script. Some stuff needs to be done manually, mainly: "
-  pretty_print "Modify ~/.zshrc with: plugins=(git zsh-z auto-color-ls zsh-syntax-highlighting)"
-  pretty_print "Update $PATH with path to gems: export PATH=$HOME/.gem/ruby/2.6.0/bin:$PATH"
 }
 
 # https://gist.github.com/arianacosta/d6d1c521d231cc09ec5fe850ae2f5be1
