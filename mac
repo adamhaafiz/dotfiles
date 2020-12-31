@@ -29,6 +29,8 @@ install_homebrew() {
 install_packages_and_apps() {
   pretty_print "Installing Homebrew packages"
   brew bundle --file=- <<EOF
+    tap "homebrew/cask-fonts"
+
     brew "mas"
     
     cask "dash"
@@ -41,6 +43,8 @@ install_packages_and_apps() {
     cask "bitwarden"
     cask "visual-studio-code"
     cask "spotify"
+    cask "slack"
+    cask "font-hack-nerd-font"
     
     # Social
     cask "whatsapp"
