@@ -5,7 +5,7 @@ main() {
   install_packages_and_apps
 
   clone_dotfiles
-  create_symlinks
+  setup_dotfiles
 
   install_oh_my_zsh
   install_oh_my_zsh_plugins
@@ -67,10 +67,15 @@ clone_dotfiles() {
   fi
 }
 
-create_symlinks() {
+setup_dotfiles() {
+  # Symlink .zshrc
   if [ ! -f "$HOME/.zshrc" ]; then
     ln -s "$HOME/.dotfiles/z-shell-run-config" "$HOME/.zshrc"
   fi
+
+  # Tell iTerm2 to load preferences from dotfiles
+  defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$HOME/.dotfiles/"
+  defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
 }
 
 install_oh_my_zsh() {
