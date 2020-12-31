@@ -62,11 +62,15 @@ EOF
 }
 
 clone_dotfiles() {
-  git clone https://github.com/haafiz-io/dotfiles.git ~/.dotfiles
+  if [ ! -d "~/.dotilfes" ]; then
+    git clone https://github.com/haafiz-io/dotfiles.git ~/.dotfiles
+  fi
 }
 
 create_symlinks() {
-  ln -s ~/.dotfiles/z-shell-run-config ~/.zshrc
+  if [ ! -f "~/.zshrc" ]; then
+    ln -s ~/.dotfiles/z-shell-run-config ~/.zshrc
+  fi
 }
 
 install_oh_my_zsh() {
