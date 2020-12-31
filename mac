@@ -62,14 +62,14 @@ EOF
 }
 
 clone_dotfiles() {
-  if [ ! -d "~/.dotfiles" ]; then
-    git clone https://github.com/haafiz-io/dotfiles.git ~/.dotfiles
+  if [ ! -d "$HOME/.dotfiles" ]; then
+    git clone https://github.com/haafiz-io/dotfiles.git "$HOME/.dotfiles"
   fi
 }
 
 create_symlinks() {
-  if [ ! -f "~/.zshrc" ]; then
-    ln -s ~/.dotfiles/z-shell-run-config ~/.zshrc
+  if [ ! -f "$HOME/.zshrc" ]; then
+    ln -s "$HOME/.dotfiles/z-shell-run-config" "$HOME/.zshrc"
   fi
 }
 
