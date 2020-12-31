@@ -78,7 +78,7 @@ setup_dotfiles() {
   fi
 
   # Tell iTerm2 to load preferences from dotfiles
-  defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$HOME/.dotfiles/"
+  defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$HOME/.dotfiles"
   defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
 }
 
