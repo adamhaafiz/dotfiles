@@ -4,10 +4,10 @@
 
 ## pre-mac
 
-* [ ] Country -&gt; Netherlands
-* [ ] Preferred Languages -&gt; English \(UK\)
-* [ ] Input Sources -&gt; ABC - Extended
-* [ ] Disable Siri
+1. Country -&gt; Netherlands
+2. Preferred Languages -&gt; English \(UK\)
+3. Input Sources -&gt; ABC - Extended
+4. Disable Siri
 
 ## mac
 
@@ -31,13 +31,29 @@ sh mac
 
 ## post-mac
 
-* [ ] Remove all icons from Dock
+1. Remove all icons from Dock
 
 ### System Preferences
 
-* [ ] Trackpad -&gt; Tap to click
-* [ ] Sound -&gt; Play feedback when volume is changed
-* [ ] Dock & Menu Bar -&gt; WiFi -&gt; Unshow in Menu Bar
-* [ ] Dock & Menu Bar -&gt; Battery -&gt; Unshow in Menu Bar, Show in Control Centre, Show Percentage
-* [ ] Dock & Menu Bar -&gt; Spotlight -&gt; Unshow in Menu Bar
+1. Trackpad -&gt; Tap to click
+2. Sound -&gt; Play feedback when volume is changed
+3. Dock & Menu Bar -&gt; WiFi -&gt; Unshow in Menu Bar
+4. Dock & Menu Bar -&gt; Battery -&gt; Unshow in Menu Bar, Show in Control Centre, Show Percentage
+5. Dock & Menu Bar -&gt; Spotlight -&gt; Unshow in Menu Bar
+
+### First Time Setups
+
+1. Xcode
+2. Android Studio
+
+### Git
+
+1. `git config --global user.name <>`
+2. `git config --global user.email <>`
+3. `ssh-keygen`
+4. Upload key to GitHub
+
+### Work Projects
+
+1. Clone work repositories
 
