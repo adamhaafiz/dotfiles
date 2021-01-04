@@ -40,6 +40,10 @@ sh mac
 3. Dock & Menu Bar -&gt; WiFi -&gt; Unshow in Menu Bar
 4. Dock & Menu Bar -&gt; Battery -&gt; Unshow in Menu Bar, Show in Control Centre, Show Percentage
 5. Dock & Menu Bar -&gt; Spotlight -&gt; Unshow in Menu Bar
+6. Desktop -&gt; Screen Saver -&gt; Start after: Never
+7. Desktop -&gt; Screen Saver -&gt; Hot Corners
+   1. Top right: Lock Screen
+   2. Top left: Desktop
 
 ### First Time Setups
 
