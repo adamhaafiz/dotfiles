@@ -53,7 +53,8 @@ sh mac
 3. `ssh-keygen`
 4. Upload key to GitHub
 
-### Work Projects
+### Work Related
 
 1. Clone work repositories
+2. Download [Xcode beta](https://developer.apple.com/download/)
 
