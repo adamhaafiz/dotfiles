@@ -45,6 +45,7 @@ install_packages_and_apps() {
     cask "spotify"
     cask "slack"
     cask "font-hack-nerd-font"
+    cask "paw"
     
     # Social
     cask "whatsapp"
