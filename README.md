@@ -44,6 +44,7 @@ sh mac
 ### First Time Setups
 
 1. Xcode
+   1. Preferences -&gt; Locations -&gt; Command Line Tools
 2. Android Studio
 
 ### Git
