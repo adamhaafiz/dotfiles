@@ -32,6 +32,7 @@ sh mac
 ## post-mac
 
 1. Remove all icons from Dock
+2. In Finder, add ~/ to Favourites
 
 ### System Preferences
 
