@@ -50,6 +50,7 @@ sh mac
 
 1. Xcode
    1. Preferences -&gt; Locations -&gt; Command Line Tools
+   2. Preferences -&gt; Text Editing -&gt; Editing -&gt; Including whitespace-only lines
 2. Android Studio
 
 ### Git
