@@ -50,7 +50,13 @@ sh mac
 
 1. Xcode
    1. Preferences -&gt; Locations -&gt; Command Line Tools
+   2. Preferences -&gt; Text Editing -&gt; Editing -&gt; Including whitespace-only lines
 2. Android Studio
+3. Dash
+   1. Search Using Selected Text: ⇧⌘D
+   2. Don't show dock icon
+   3. Show menu bar icon
+   4. Dismiss main window
 
 ### Git
 
