@@ -32,6 +32,7 @@ install_packages_and_apps() {
     tap "homebrew/cask-fonts"
 
     brew "mas"
+    brew "vapor"
     
     cask "dash"
     cask "time-out"
@@ -53,7 +54,7 @@ install_packages_and_apps() {
     cask "telegram"
     
     # Work
-    # cask "android-studio"
+    cask "android-studio"
     # cask "pritunl"
     # cask "zeplin"
     # cask "sequel-pro"
