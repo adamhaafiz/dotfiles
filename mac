@@ -13,6 +13,8 @@ main() {
   # shellcheck disable=SC2119
   install_oh_my_zsh_aliases
   set_macos_preferences
+
+  print_url_to_docs
 }
 
 install_homebrew() {
@@ -155,6 +157,10 @@ set_macos_preferences() {
   # Keyboard -> Input Sources
   # Show Input menu in menu bar
   defaults write com.apple.TextInputMenu '{ visible = 1; }'
+}
+
+print_url_to_docs() {
+  pretty_print "Check out the docs: https://app.gitbook.com/@haafiz/s/dotfiles/"
 }
 
 # https://gist.github.com/arianacosta/d6d1c521d231cc09ec5fe850ae2f5be1
