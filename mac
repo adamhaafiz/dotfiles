@@ -3,6 +3,7 @@
 main() {
   install_homebrew
   install_packages_and_apps
+  update_packages_and_apps
 
   clone_dotfiles
   setup_dotfiles
@@ -72,8 +73,17 @@ EOF
   mas install 1438243180 # Dark Reader for Safari
 }
 
+update_packages_and_apps() {
+  pretty_print "Checking for updates in Homebrew packages"
+
+  # https://docs.brew.sh/FAQ#how-do-i-update-my-local-packages
+  brew update
+  brew upgrade
+}
+
 clone_dotfiles() {
   if [ ! -d "$HOME/.dotfiles" ]; then
+    pretty_print "First launch! Cloning .dotfiles"
     git clone https://github.com/haafiz-io/dotfiles.git "$HOME/.dotfiles"
   fi
 }
@@ -81,10 +91,12 @@ clone_dotfiles() {
 setup_dotfiles() {
   # Symlink .zshrc
   if [ ! -f "$HOME/.zshrc" ]; then
+    pretty_print "Symlinking .zshrc"
     ln -s "$HOME/.dotfiles/z-shell-run-config" "$HOME/.zshrc"
   fi
 
   # Tell iTerm2 to load preferences from dotfiles
+  pretty_print "Setting iTerm 2 preferences"
   defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$HOME/.dotfiles"
   defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
 }
@@ -122,6 +134,7 @@ install_oh_my_zsh_aliases() {
   pretty_print "Creating Oh My Zsh aliases"
 
   if [ ! -f "$HOME/.oh-my-zsh/custom/aliases.zsh" ]; then
+    pretty_print "Creating custom/aliases.zsh"
     cat <<-EOF >> "$HOME/.oh-my-zsh/custom/aliases.zsh"
       alias lc='colorls -A1 --sd'   
       alias gt='git fetch -p && git branch -vv | grep "origin/.*: gone]" | awk "{print \$1}" | xargs git branch -D'
@@ -129,6 +142,7 @@ EOF
   fi
 
   if [ ! -f "$HOME/.oh-my-zsh/custom/cman.zsh" ]; then
+    pretty_print "Creating custom/cman.zsh"
     cat <<EOF >> "$HOME/.oh-my-zsh/custom/cman.zsh"
       cman() {
         if [ -z "\$1" ]
@@ -144,6 +158,8 @@ EOF
 
 # https://github.com/mathiasbynens/dotfiles/blob/main/.macos
 set_macos_preferences() {
+  pretty_print "Setting macOS preferences"
+
   # Close any open System Preferences panes, to prevent them from overriding
   # settings we’re about to change
   osascript -e 'tell application "System Preferences" to quit'
