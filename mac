@@ -120,8 +120,8 @@ install_oh_my_zsh_aliases() {
 
   if [ ! -f "$HOME/.oh-my-zsh/custom/aliases.zsh" ]; then
     cat <<-EOF >> "$HOME/.oh-my-zsh/custom/aliases.zsh"
-      alias lc='colorls -A1 --sd'   
-      alias gt='git fetch -p && git branch -vv | grep "origin/.*: gone]" | awk "{print \$1}" | xargs git branch -D'
+      alias lc='colorls -A1 --sd'
+      alias gt='git fetch -p && git branch -vv | grep "origin/.*: gone]" | awk "{print \\\$1}" | xargs git branch -D'
 EOF
   fi
 
