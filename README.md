@@ -52,11 +52,16 @@ sh mac
    1. Preferences -&gt; Locations -&gt; Command Line Tools
    2. Preferences -&gt; Text Editing -&gt; Editing -&gt; Including whitespace-only lines
 2. Android Studio
+   1. File -&gt; Invalidate Caches / Restart
+   2. Android Studio -&gt; Preferences -&gt; Emulator -&gt; Launch in a tool window
 3. Dash
    1. Search Using Selected Text: ⇧⌘D
    2. Don't show dock icon
    3. Show menu bar icon
    4. Dismiss main window
+4. Time Out
+   1. Normal - break for 10 minutes every 1 hour
+   2. Micro - break for 15 seconds every 15 minutes
 
 ### Git
 
