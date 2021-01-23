@@ -51,6 +51,7 @@ install_packages_and_apps() {
     cask "font-hack-nerd-font"
     cask "paw"
     cask "gitup"
+    cask "postman"
     
     # Social
     cask "whatsapp"
