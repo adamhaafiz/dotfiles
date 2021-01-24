@@ -54,6 +54,7 @@ sh mac
 2. Android Studio
    1. File -&gt; Invalidate Caches / Restart
    2. Android Studio -&gt; Preferences -&gt; Emulator -&gt; Launch in a tool window
+   3. Android Studio -&gt; Preferences -&gt; Appearance -&gt; Widescreen tool window layout
 3. Dash
    1. Search Using Selected Text: ⇧⌘D
    2. Don't show dock icon
