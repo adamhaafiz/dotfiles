@@ -52,26 +52,25 @@ install_packages_and_apps() {
     cask "paw"
     cask "gitup"
     cask "postman"
+    cask "android-studio"
+    cask "appcode"
+    cask "sourcetree"
     
     # Social
     cask "whatsapp"
     cask "telegram"
     
     # Work
-    cask "android-studio"
-    # cask "pritunl"
-    # cask "zeplin"
-    # cask "sequel-pro"
-    
-    # Personal
-    # cask "sourcetree"
+    cask "pritunl"
+    cask "zeplin"
+    cask "sequel-pro"
 EOF
   
   pretty_print "Installing Mac App Store apps"
   mas install 497799835 # Xcode
   mas install 409203825 # Numbers
-  mas install 1107421413 # 1Blocker
-  mas install 1438243180 # Dark Reader for Safari
+  # mas install 1107421413 # 1Blocker
+  # mas install 1438243180 # Dark Reader for Safari
 }
 
 update_packages_and_apps() {
