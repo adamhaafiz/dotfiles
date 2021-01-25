@@ -55,6 +55,7 @@ install_packages_and_apps() {
     cask "android-studio"
     cask "appcode"
     cask "sourcetree"
+    cask "handbrake"
     
     # Social
     cask "whatsapp"
