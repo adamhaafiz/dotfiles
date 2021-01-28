@@ -61,8 +61,9 @@ sh mac
    3. Show menu bar icon
    4. Dismiss main window
 4. Time Out
-   1. Normal - break for 10 minutes every 1 hour
-   2. Micro - break for 15 seconds every 15 minutes
+   1. General -&gt; Automatically start Time Out
+   2. Normal - break for 10 minutes every 1 hour
+   3. Micro - break for 15 seconds every 15 minutes
 
 ### Git
 
