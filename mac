@@ -70,6 +70,7 @@ EOF
   pretty_print "Installing Mac App Store apps"
   mas install 497799835 # Xcode
   mas install 409203825 # Numbers
+  mas install 668208984 # GIPHY Capture
   # mas install 1107421413 # 1Blocker
   # mas install 1438243180 # Dark Reader for Safari
 }
