@@ -36,6 +36,7 @@ install_packages_and_apps() {
 
     brew "mas"
     brew "vapor"
+    brew "asdf"
     
     cask "dash"
     cask "time-out"

@@ -1,8 +1,8 @@
 # RubyGems complains immediately that the path to `ruby` isn't in $PATH
 # TODO: find out if asdf fixes this
-# Update PATH with path to Ruby
-export PATH=$HOME/.gem/ruby/2.6.0/bin:$PATH
-
+# Update PATH with path to Ruby and .local/bin for asdf
+export PATH=$HOME/.local/bin:$HOME/.gem/ruby/2.6.0/bin:$PATH
+ 
 # Declare ZSH environment variable with path to Oh My Zsh installation
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -10,7 +10,7 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="random"
 
 # Declare array of plugins
-plugins=(git zsh-z auto-color-ls zsh-syntax-highlighting)
+plugins=(git asdf zsh-z auto-color-ls zsh-syntax-highlighting)
 
 # Run the oh-my-zsh script
 source $ZSH/oh-my-zsh.sh
