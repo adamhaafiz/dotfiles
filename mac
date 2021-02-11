@@ -58,6 +58,7 @@ install_packages_and_apps() {
     cask "sourcetree"
     cask "handbrake"
     cask "evernote"
+    cask "ledger-live"
     
     # Social
     cask "whatsapp"
